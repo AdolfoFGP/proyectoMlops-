@@ -1,0 +1,40 @@
+{
+    "AlgorithmSpecification":{
+        "TrainingImage": "992382377547.dkr.ecr.us-west-2.amazonaws.com/creditcard:latest",
+        "TrainingInputMode": "File"
+    },
+    "RoleArn": "arn:aws:iam::992382377547:role/MLOps",
+    "OutputDataConfig": {
+        "S3OutputPath": ""
+    },
+    "ResourceConfig": {
+        "InstanceCount": 1,
+        "InstanceType": "ml.m5.large",
+        "VolumeSizeInGB": 30
+    },
+    "TrainingJobName": "",
+    "HyperParameters": {
+        "max_depth": "5",
+        "learning_rate": "0.1",
+        "objective": "binary:logistic",
+        "eval_metric": "logloss"
+    },
+    "StoppingCondition": {
+        "MaxRuntimeInSeconds": 360000
+    },
+    "InputDataConfig": [
+        {
+            "ChannelName": "training",
+            "DataSource": {
+                "S3DataSource": {
+                    "S3DataType": "S3Prefix",
+                    "S3Uri": "",
+                    "S3DataDistributionType": "FullyReplicated"
+                }
+            },
+            "ContentType": "text/csv",
+            "CompressionType": "None"
+        }
+    ],
+    "Tags": []
+}
